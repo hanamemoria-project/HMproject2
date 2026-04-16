@@ -185,7 +185,7 @@
         cloudName: CLOUD_NAME,
         uploadPreset: UPLOAD_PRESET,
         sources: ['local', 'camera'],
-        clientAllowedFormats: ['images'], // Hanya boleh foto
+        clientAllowedFormats: ['image'], // Hanya boleh foto
         multiple: false
     }, (error, result) => {
         if (!error && result && result.event === "success") {

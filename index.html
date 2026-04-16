@@ -191,19 +191,22 @@
     const CLOUD_NAME = "dg5sjaueq"; // Ganti dengan Cloud Name dari dashboard Cloudinary
     const UPLOAD_PRESET = "hm_preset"; // Ganti dengan nama upload preset (Unsigned) yang kamu buat
 
-    // 1. Widget Upload Foto
+        // 1. Widget Upload Foto
     var widgetFoto = cloudinary.createUploadWidget({
         cloudName: CLOUD_NAME,
         uploadPreset: UPLOAD_PRESET,
         sources: ['local', 'camera'],
-        clientAllowedFormats: ['image'], // Hanya boleh foto
+        clientAllowedFormats: ['images'],
         multiple: false
     }, (error, result) => {
         if (!error && result && result.event === "success") {
-            // Jika berhasil, simpan link ke input hidden dan ubah tampilan
             document.getElementById("link_foto_raw").value = result.info.secure_url;
             document.getElementById("btn_upload_foto").innerText = "Ganti Foto 📷";
             document.getElementById("status_foto").style.display = "block";
+            
+            // KODE BARU: Tampilkan Preview Foto
+            document.getElementById("preview_foto").src = result.info.secure_url;
+            document.getElementById("preview_foto_container").style.display = "block";
         }
     });
 
@@ -212,16 +215,20 @@
         cloudName: CLOUD_NAME,
         uploadPreset: UPLOAD_PRESET,
         sources: ['local', 'camera'],
-        clientAllowedFormats: ['video'], // Hanya boleh video
+        clientAllowedFormats: ['video'],
         multiple: false
     }, (error, result) => {
         if (!error && result && result.event === "success") {
-            // Jika berhasil, simpan link ke input hidden dan ubah tampilan
             document.getElementById("link_video_raw").value = result.info.secure_url;
             document.getElementById("btn_upload_video").innerText = "Ganti Video 🎬";
             document.getElementById("status_video").style.display = "block";
+            
+            // KODE BARU: Tampilkan Preview Video
+            document.getElementById("preview_video").src = result.info.secure_url;
+            document.getElementById("preview_video_container").style.display = "block";
         }
     });
+    }, (error, result)     }, (error, result) 
 
     // Pasang fungsi klik ke tombol
     document.getElementById("btn_upload_foto").addEventListener("click", () => widgetFoto.open(), false);

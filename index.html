@@ -126,7 +126,7 @@
                 </p>
             </div>
 
-                <div class="form-group">
+                            <div class="form-group">
                 <label>🖼️ Upload Foto Terbaikmu</label>
                 <button type="button" id="btn_upload_foto" class="upload-btn">Pilih Foto 📷</button>
                 <span id="status_foto" class="upload-success-text">✅ Foto berhasil diunggah!</span>
@@ -134,7 +134,6 @@
                 <div id="preview_foto_container" style="display: none; margin-top: 15px; text-align: center;">
                     <img id="preview_foto" src="" style="max-width: 100%; max-height: 250px; border-radius: 12px; border: 2px solid #e0e0e0; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                 </div>
-
                 <input type="hidden" name="link_foto_raw" id="link_foto_raw">
             </div>
 
@@ -146,10 +145,8 @@
                 <div id="preview_video_container" style="display: none; margin-top: 15px; text-align: center;">
                     <video id="preview_video" controls style="max-width: 100%; max-height: 250px; border-radius: 12px; border: 2px solid #e0e0e0; box-shadow: 0 4px 6px rgba(0,0,0,0.05);"></video>
                 </div>
-
                 <input type="hidden" name="link_video_raw" id="link_video_raw">
             </div>
-                <input type="hidden" name="link_video_raw" 
 
             <div class="form-group">
                 <label>📍 Provinsi Tujuan</label>
@@ -159,7 +156,7 @@
                     <option value="DKI Jakarta">DKI Jakarta</option>
                     <option value="Jawa Tengah">Jawa Tengah</option>
                     <option value="Jawa Timur">Jawa Timur</option>
-                    </select>
+                </select>
             </div>
 
             <div class="form-group">
@@ -185,13 +182,10 @@
 </div>
 
 <script>
-    // ==========================================
-    // KONFIGURASI CLOUDINARY (GANTI BAGIAN INI)
-    // ==========================================
-    const CLOUD_NAME = "dg5sjaueq"; // Ganti dengan Cloud Name dari dashboard Cloudinary
-    const UPLOAD_PRESET = "hm_preset"; // Ganti dengan nama upload preset (Unsigned) yang kamu buat
+    const CLOUD_NAME = "dg5sjaueq"; 
+    const UPLOAD_PRESET = "hm_preset"; 
 
-        // 1. Widget Upload Foto
+    // 1. Widget Upload Foto
     var widgetFoto = cloudinary.createUploadWidget({
         cloudName: CLOUD_NAME,
         uploadPreset: UPLOAD_PRESET,
@@ -203,8 +197,6 @@
             document.getElementById("link_foto_raw").value = result.info.secure_url;
             document.getElementById("btn_upload_foto").innerText = "Ganti Foto 📷";
             document.getElementById("status_foto").style.display = "block";
-            
-            // KODE BARU: Tampilkan Preview Foto
             document.getElementById("preview_foto").src = result.info.secure_url;
             document.getElementById("preview_foto_container").style.display = "block";
         }
@@ -222,15 +214,12 @@
             document.getElementById("link_video_raw").value = result.info.secure_url;
             document.getElementById("btn_upload_video").innerText = "Ganti Video 🎬";
             document.getElementById("status_video").style.display = "block";
-            
-            // KODE BARU: Tampilkan Preview Video
             document.getElementById("preview_video").src = result.info.secure_url;
             document.getElementById("preview_video_container").style.display = "block";
         }
     });
-    }, (error, result)     }, (error, result) 
 
-    // Pasang fungsi klik ke tombol
+    // Pasang fungsi klik
     document.getElementById("btn_upload_foto").addEventListener("click", () => widgetFoto.open(), false);
     document.getElementById("btn_upload_video").addEventListener("click", () => widgetVideo.open(), false);
 
